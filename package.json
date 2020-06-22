@@ -1,0 +1,32 @@
+{
+  "name": "@argha0277/rest-api-auth",
+  "version": "1.0.0",
+  "description": "REST API authorization key generator and validator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/argha0977/rest-api-auth"
+  },
+  "author": "Argha Dey Sarkar",
+  "license": "MIT",
+  "keywords": [
+    "npm",
+    "node",
+    "rest",
+    "api",
+    "authorization",
+    "auth",
+    "key"
+  ],
+  "bugs": {
+    "url": "https://github.com/argha0977/rest-api-auth/issues"
+  },
+  "homepage": "https://github.com/argha0977/rest-api-auth#readme",
+  "dependencies": {
+    "@argha0277/otp-generator": "^1.0.2",
+    "fs": "0.0.1-security"
+  }
+}
