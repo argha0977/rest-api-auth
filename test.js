@@ -1,6 +1,9 @@
 const auth = require('./index');
 
-//console.log(auth.generateKey());
+var result = auth.generateKey();
+console.log(result);
+console.log(auth.verifyKey(result));
+
 /* auth.generateKeyAndStore((result) => {
     console.log(result);
 }) */
@@ -18,9 +21,9 @@ const auth = require('./index');
     console.log(result);
 }) */
 
-auth.removeKeyFromStore('U1A5Mlk5MzQwMjQ6MzdQNTg0NFg0MkszOQ==', (result) => {
+/* auth.removeKeyFromStore('U1A5Mlk5MzQwMjQ6MzdQNTg0NFg0MkszOQ==', (result) => {
     console.log(result);
     auth.getKeysFromStore((keys) => {
         console.log(keys);
     })
-})
+}) */
