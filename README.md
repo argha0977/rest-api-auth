@@ -22,19 +22,14 @@ npm i @argha0277/rest-api-auth --save
 var auth = require('@argha0277/rest-api-auth')
 ```
 
-```js
-var result = auth.generateKey();
-
 ```
 ### generateKey()
 
 It will generate and return a JSON containing authirization key, user id and a secret key.
 
 ```js
+var result = auth.generateKey();
 
-auth.generateKeyAndStore((result) => {
-    console.log(result);
-})
 
 ```
 ### generateKeyAndStore(callback)
@@ -45,8 +40,13 @@ auth.generateKeyAndStore((result) => {
 
 It will generate an authorization key and store it in a key store, and return a JSON containing authirization key, user id and a secret key.
 
+
 ```js
-var result = auth.verifyKey({ "userid": "95D4725G9357", "secretKey": "92540603T935728", "authKey": "U1A5Mlk5MzQwMjQ6MzdQNTg0NFg0MkszOQ==" })
+
+auth.generateKeyAndStore((result) => {
+    console.log(result);
+})
+
 
 ```
 ### verifyKey(keyJson)
@@ -59,10 +59,7 @@ var result = auth.verifyKey({ "userid": "95D4725G9357", "secretKey": "92540603T9
 It will verify the authirization key with the user id and secret key. If verifification is successful returns true, otherwise returns false.
 
 ```js
-
-auth.verifyKeyFromStore('OTVENDcyNUc5MzU3OjkyNTQwNjAzVDkzNTcy==', (result) => {
-    console.log(result);
-})
+var result = auth.verifyKey({ "userid": "95D4725G9357", "secretKey": "92540603T935728", "authKey": "U1A5Mlk5MzQwMjQ6MzdQNTg0NFg0MkszOQ==" })
 
 ```
 ### verifyKeyFromStore(key, callback)
@@ -76,8 +73,8 @@ It will verify the authirization key with the keys present in the key store. If 
 
 ```js
 
-auth.getKeysFromStore((keys) => {
-    console.log(keys);
+auth.verifyKeyFromStore('OTVENDcyNUc5MzU3OjkyNTQwNjAzVDkzNTcy==', (result) => {
+    console.log(result);
 })
 
 ```
@@ -89,11 +86,13 @@ auth.getKeysFromStore((keys) => {
 
 It will the list of keys present in the key store.
 
+
 ```js
 
-auth.getKeyJsonFromStore('U1A5Mlk5MzQwMjQ6MzdQNTg0NFg0MkszOQ==', (result) => {
-    console.log(result);
+auth.getKeysFromStore((keys) => {
+    console.log(keys);
 })
+
 
 ```
 ### getKeyJsonFromStore(key, callback)
@@ -105,11 +104,13 @@ auth.getKeyJsonFromStore('U1A5Mlk5MzQwMjQ6MzdQNTg0NFg0MkszOQ==', (result) => {
 
 It will return a JSON containing authirization key, user id and a secret key if the key is present in key store.
 
+
 ```js
 
-auth.removeKeyFromStore('U1A5Mlk5MzQwMjQ6MzdQNTg0NFg0MkszOQ==', (result) => {
+auth.getKeyJsonFromStore('U1A5Mlk5MzQwMjQ6MzdQNTg0NFg0MkszOQ==', (result) => {
     console.log(result);
 })
+
 
 ```
 ### removeKeyFromStore(key, callback)
@@ -121,6 +122,13 @@ auth.removeKeyFromStore('U1A5Mlk5MzQwMjQ6MzdQNTg0NFg0MkszOQ==', (result) => {
 
 It will the key is present in key store. If removal is successful returns true, otherwise returns false.
 
+```js
+
+auth.removeKeyFromStore('U1A5Mlk5MzQwMjQ6MzdQNTg0NFg0MkszOQ==', (result) => {
+    console.log(result);
+})
+
+```
 ## Tests
 
 ```js
