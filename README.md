@@ -1,6 +1,6 @@
 #@argha0277/rest-api-auth
 
-> '@argha0277/rest-api-auth' is a REST API Authrization key generator and validator.
+> '@argha0277/rest-api-auth' is a REST API Authorization key generator and validator.
 
 
 
@@ -19,31 +19,107 @@ npm i @argha0277/rest-api-auth --save
 ## Usage
 
 ```js
-var otpgen = require('@argha0277/rest-api-auth')
+var auth = require('@argha0277/rest-api-auth')
 ```
 
 ```js
-var otp = otpgen.generate(4);
+var result = auth.generateKey();
 
 ```
-### generate(digis)
+### generateKey()
 
-**Arguments**
-
-* `digits` - Number of digits in OTP. Default length is 4.
+It will generate and return a JSON containing authirization key, user id and a secret key.
 
 ```js
-var otpgen = require('@argha0277/rest-api-auth')
 
-var otp = otpgen.generateWithSeed(4, 541274896325);
+auth.generateKeyAndStore((result) => {
+    console.log(result);
+})
 
 ```
-### generate(length, seed)
+### generateKeyAndStore(callback)
 
 **Arguments**
 
-* `digits` - Number of digits in OTP. Default length is 4.
-* `seed` - A numeric seed.
+* `callback` - A callback function.
+
+It will generate an authorization key and store it in a key store, and return a JSON containing authirization key, user id and a secret key.
+
+```js
+var result = auth.verifyKey({ "userid": "95D4725G9357", "secretKey": "92540603T935728", "authKey": "U1A5Mlk5MzQwMjQ6MzdQNTg0NFg0MkszOQ==" })
+
+```
+### verifyKey(keyJson)
+
+**Arguments**
+
+* `keyJson` - Key Json containing auth key, user id & secret key.
+
+
+It will verify the authirization key with the user id and secret key. If verifification is successful returns true, otherwise returns false.
+
+```js
+
+auth.verifyKeyFromStore('OTVENDcyNUc5MzU3OjkyNTQwNjAzVDkzNTcy==', (result) => {
+    console.log(result);
+})
+
+```
+### verifyKeyFromStore(key, callback)
+
+**Arguments**
+
+* `key` - A Base64 format key to be validated.
+* `callback` - A callback function.
+
+It will verify the authirization key with the keys present in the key store. If verifification is successful returns true, otherwise returns false.
+
+```js
+
+auth.getKeysFromStore((keys) => {
+    console.log(keys);
+})
+
+```
+### getKeysFromStore(callback)
+
+**Arguments**
+
+* `callback` - A callback function.
+
+It will the list of keys present in the key store.
+
+```js
+
+auth.getKeyJsonFromStore('U1A5Mlk5MzQwMjQ6MzdQNTg0NFg0MkszOQ==', (result) => {
+    console.log(result);
+})
+
+```
+### getKeyJsonFromStore(key, callback)
+
+**Arguments**
+
+* `key` - A Base64 format key.
+* `callback` - A callback function.
+
+It will return a JSON containing authirization key, user id and a secret key if the key is present in key store.
+
+```js
+
+auth.removeKeyFromStore('U1A5Mlk5MzQwMjQ6MzdQNTg0NFg0MkszOQ==', (result) => {
+    console.log(result);
+})
+
+```
+### removeKeyFromStore(key, callback)
+
+**Arguments**
+
+* `key` - A Base64 format key.
+* `callback` - A callback function.
+
+It will the key is present in key store. If removal is successful returns true, otherwise returns false.
 
 ## Tests
 
