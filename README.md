@@ -22,7 +22,6 @@ npm i @argha0277/rest-api-auth --save
 var auth = require('@argha0277/rest-api-auth')
 ```
 
-```
 ### generateKey()
 
 It will generate and return a JSON containing authirization key, user id and a secret key.
