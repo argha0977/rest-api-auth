@@ -41,6 +41,10 @@ const common = require('./functions/common');
       * @param {*} keyJson Key Json containing auth key, user id & secret key  
       */
      verifyKey(keyJson) {
+        if(keyJson.userid && !keyJson.clientId) {
+            keyJson.clientId = keyJson.userid;
+            delete keyJson.userid;
+        }
         return keygen.verify(keyJson);
      },
      

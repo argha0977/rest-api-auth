@@ -21,7 +21,7 @@ const { base64encode, base64decode } = require('nodejs-base64');
          //Generate Base64 encoded Key
          var authKey = base64encode(generatedStr);
          var result = {
-             userid: userid,
+             clientId: userid,
              secretKey: password,
              authKey: authKey
          };
@@ -38,7 +38,7 @@ const { base64encode, base64decode } = require('nodejs-base64');
         if(typeof(authKeyStr) == 'string') {
             splittedAuthKey = authKeyStr.split(':');
             if(splittedAuthKey.length == 2) {
-                if (splittedAuthKey[0] == keyJson.userid && splittedAuthKey[1] == keyJson.secretKey) return true;
+                if (splittedAuthKey[0] == keyJson.clientId && splittedAuthKey[1] == keyJson.secretKey) return true;
                 else return false;
             }
             return false;
